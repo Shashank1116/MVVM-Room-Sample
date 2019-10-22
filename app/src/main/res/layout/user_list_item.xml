@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/avatar"/>
+    <TextView
+            android:id="@+id/user_name"
+            tools:text="Shashank Rohilla"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:id="@+id/user_id"
+            tools:text="121212"
+            android:layout_below="@id/user_name"
+            android:layout_toRightOf="@id/avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+</layout>
