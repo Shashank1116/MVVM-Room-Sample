@@ -8,8 +8,7 @@ import androidx.room.Query
 import com.example.testapplication.User
 
 @Dao
-public interface UserDAO{
-
+interface UserDAO{
     @Query("SELECT * from user_table")
     fun getUsers(): LiveData<List<User>>
 

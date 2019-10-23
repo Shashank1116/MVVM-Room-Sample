@@ -38,6 +38,7 @@ class UserListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentUserListBinding.inflate(inflater,container,false).apply{
+
             vieWModel = ViewModelProviders.of(this@UserListFragment,UserViewModelFactory(Injection.provideRepository(this@UserListFragment.activity!!.application))).get(UserListViewModel::class.java)
         }
         return binding.root
@@ -55,7 +56,7 @@ class UserListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         binding.vieWModel!!.getUserList()
-        binding.vieWModel!!.observeList().observe(this, Observer {
+        binding.vieWModel!!.listObservable!!.observe(this, Observer {
             binding.userListView.adapter = UserListAdapter(it)
         })
         binding.vieWModel!!.addUsers(getRandomUsers())
@@ -64,7 +65,9 @@ class UserListFragment : Fragment() {
     fun getRandomUsers():List<User>{
         val list = ArrayList<User>()
         list.add(User("Shashank",1,"so-so"))
-        list.add(User("Shubham",1,"so-so"))
+        list.add(User("Shubham",2,"so-so"))
+        list.add(User("Test",3,"so-so"))
+        list.add(User("Hello",4,"so-so"))
         return list
 
     }

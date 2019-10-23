@@ -5,12 +5,13 @@ import androidx.lifecycle.LiveData
 import com.example.testapplication.User
 
 class LocalDataSource(private val userDAO: UserDAO): UserDataSource{
-    private var list: LiveData<List<User>>?=null
+    var list: LiveData<List<User>>?=null
 
 
     override fun getUserList(callbacks: UserDataSource.GetUserListCallbacks) {
-        list = userDAO.getUsers()
+        callbacks.onListLoaded(userDAO.getUsers())
     }
+
 
 
     override fun saveUserList(list: List<User>) {

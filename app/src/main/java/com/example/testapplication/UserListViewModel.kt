@@ -8,12 +8,12 @@ import com.example.testapplication.data.UserDataSource
 
 class UserListViewModel(val repository: Repository): ViewModel(){
 
-   var listObservable = MutableLiveData<List<User>>()
+   var listObservable : LiveData<List<User>>?=null
 
     fun getUserList(){
         repository.getUserList(object :UserDataSource.GetUserListCallbacks{
-            override fun onListLoaded(list: List<User>) {
-                listObservable.value = list
+            override fun onListLoaded(list: LiveData<List<User>>) {
+                listObservable = list
             }
 
             override fun onError(e: String) {
@@ -25,9 +25,6 @@ class UserListViewModel(val repository: Repository): ViewModel(){
 
     fun addUsers(list: List<User>){
         repository.saveUserList(list)
-    }
-    fun observeList(): LiveData<List<User>> {
-        return listObservable
     }
 
 }
